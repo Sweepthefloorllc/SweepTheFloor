@@ -499,3 +499,48 @@
   }
 }
 
+/* Mobile page-specific flow fixes */
+@media(max-width:900px){
+  /* Services page: keep each row as image then matching text block. */
+  .services-page .service-row,
+  .services-page .service-row.reverse{
+    grid-template-columns:1fr!important;
+    gap:0;
+    margin-bottom:10px;
+  }
+
+  .services-page .service-row .photo,
+  .services-page .service-row.reverse .photo{
+    order:1!important;
+    min-height:240px;
+  }
+
+  .services-page .service-row .service-info,
+  .services-page .service-row.reverse .service-info{
+    order:2!important;
+    padding:24px 20px;
+  }
+
+  /* About page: place portrait image below the Built on Trust story block. */
+  .about-page .about-story .story{
+    order:1;
+  }
+
+  .about-page .about-story .portrait{
+    order:2;
+    margin-top:18px;
+  }
+}
+
+@media(max-width:480px){
+  .services-page .service-row,
+  .services-page .service-row.reverse{
+    margin-bottom:8px;
+  }
+
+  .services-page .service-row .service-info,
+  .services-page .service-row.reverse .service-info{
+    padding:20px 16px;
+  }
+}
+
