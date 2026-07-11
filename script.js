@@ -92,8 +92,8 @@ function initReviewMarquee() {
       const distance = -(track.scrollWidth / 2);
 
       // compute duration based on width to keep speed roughly consistent
-      const baseSpeed = 90; // pixels per second
-      const duration = Math.max(18, Math.round((Math.abs(distance) / baseSpeed))); // seconds
+      const baseSpeed = 30; // pixels per second for a calmer marquee pace
+      const duration = Math.max(55, Math.round((Math.abs(distance) / baseSpeed))); // seconds
 
       // apply CSS variables and style for animation
       track.style.setProperty('--review-distance', `${distance}px`);
@@ -129,16 +129,17 @@ if (document.readyState === 'loading') {
   initReviewMarquee();
 }
 
-/* Dynamically load the overrides stylesheet so we don't need to edit every HTML file.
-   This ensures the redesigned rules apply after the main stylesheet. */
+/* Dynamically load the overrides stylesheet only if it is not already present.
+   This avoids duplicate stylesheet insertion when HTML pages already include it. */
 (function loadOverrides(){
   try{
     var href = 'styles.overrides.css';
+    var alreadyLoaded = Array.from(document.querySelectorAll('link[rel="stylesheet"]')).some(link => link.href && link.href.endsWith(href));
+    if (alreadyLoaded) return;
     var link = document.createElement('link');
     link.rel = 'stylesheet';
     link.href = href;
     link.media = 'all';
-    // Append to head so it takes precedence over earlier CSS rules
     document.head.appendChild(link);
   }catch(e){
     console.warn('Could not load overrides stylesheet', e);
