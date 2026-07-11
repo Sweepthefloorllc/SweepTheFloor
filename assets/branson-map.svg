@@ -1,5 +1,42 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 120" preserveAspectRatio="xMidYMid meet">
-  <rect width="200" height="120" fill="#eaf5f8"/>
-  <circle cx="140" cy="70" r="28" fill="#0bb2b5" opacity="0.18"/>
-  <text x="20" y="65" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#054" >Branson, Missouri</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 240" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f6fbff"/>
+      <stop offset="100%" stop-color="#e7f4fb"/>
+    </linearGradient>
+    <linearGradient id="path" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#f8fbfd"/>
+      <stop offset="100%" stop-color="#d8eef6"/>
+    </linearGradient>
+    <linearGradient id="main-road" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#c9e3ec"/>
+      <stop offset="100%" stop-color="#b2d9e4"/>
+    </linearGradient>
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#05738d" flood-opacity=".12"/>
+    </filter>
+  </defs>
+  <rect width="360" height="240" rx="34" fill="url(#bg)"/>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M60 54c24-14 54-20 84-12 20 5 34 18 48 30 22 20 36 46 38 74 3 28-8 54-30 70-32 22-82 24-118 12-36-12-56-38-62-68-6-30 4-58 20-84 10-14 20-24 34-30z" fill="#e2f2f8" stroke="#daeaf0" stroke-width="1.5"/>
+    <path d="M74 70c22-10 48-12 72-6 18 4 34 14 50 26 18 16 28 36 30 58" stroke="url(#path)" stroke-width="16" opacity=".95"/>
+    <path d="M62 120c16-10 34-14 50-12 16 3 30 10 42 22" stroke="#c8dfe6" stroke-width="12" opacity=".88"/>
+    <path d="M132 46c18 8 42 16 64 14 14-1 26 4 36 14" stroke="#c8dfe6" stroke-width="10" opacity=".88"/>
+    <path d="M204 86c12 6 22 14 30 26" stroke="#b8d5dc" stroke-width="9" opacity=".9"/>
+    <path d="M192 162c8-10 18-16 30-14 10 2 18 8 24 16" stroke="#b8d5dc" stroke-width="9" opacity=".9"/>
+  </g>
+  <g fill="#fff" opacity=".75">
+    <circle cx="96" cy="78" r="4"/>
+    <circle cx="108" cy="90" r="4"/>
+    <circle cx="145" cy="126" r="4"/>
+    <circle cx="198" cy="72" r="4"/>
+    <circle cx="228" cy="138" r="4"/>
+  </g>
+  <g filter="url(#shadow)">
+    <path d="M254 115c-12 0-22 9-22 21 0 11 11 22 22 38 11-16 22-27 22-38 0-12-10-21-22-21zm0 30a9 9 0 1 1 0-18 9 9 0 0 1 0 18z" fill="#0b8d99"/>
+    <circle cx="254" cy="136" r="8" fill="#fff"/>
+  </g>
+  <rect x="22" y="28" width="178" height="34" rx="16" fill="#fff" opacity=".95"/>
+  <text x="34" y="50" font-family="Inter, Arial, Helvetica, sans-serif" font-size="14" font-weight="700" fill="#08394e">Branson, Missouri</text>
+  <text x="34" y="64" font-family="Inter, Arial, Helvetica, sans-serif" font-size="10" fill="#3c6f7f">Service area map</text>
 </svg>

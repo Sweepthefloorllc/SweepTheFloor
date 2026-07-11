@@ -27,8 +27,11 @@
 @keyframes reviewScroll{from{transform:translateX(0)}to{transform:translateX(var(--review-distance))}}
 
 /* Footer */
-.footer{background:var(--navy);color:#d8eef4;padding:56px 0}
+.footer{position:relative;isolation:isolate;background:linear-gradient(180deg,#051729,#03172c);color:#d8eef4;padding:56px 0;overflow:hidden}
+.footer::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 12% 22%, rgba(47,168,194,.06), transparent 18%), radial-gradient(circle at 84% 28%, rgba(29,140,164,.05), transparent 18%), radial-gradient(circle at 60% 82%, rgba(84,184,206,.06), transparent 16%);pointer-events:none}
+.footer::after{content:"";position:absolute;left:8%;bottom:10%;width:160px;height:160px;border-radius:50%;background:rgba(11,178,181,.08);pointer-events:none}
 .footer a{color:#cdeef3}
+.footer__bottom .licensed{color:#94a7b8}
 
 @media(max-width:980px){
   .hero h1{font-size:36px}
@@ -37,6 +40,9 @@
 
 /* Dark hero variant used on Services / About / Contact pages */
 .page-hero--dark{background:var(--navy);color:#ffffff;padding:56px 0;position:relative}
+.hero__visual{display:flex;align-items:center;justify-content:center;max-width:100%;position:relative;height:auto!important}
+.hero__image{position:static!important;width:100%!important;height:420px!important;max-width:560px!important;border-radius:18px;overflow:hidden}
+.hero__image img{object-position:center center;width:100%;height:100%;}
 .page-hero--dark .container{display:block}
 .page-hero--dark .eyebrow{color:rgba(255,255,255,.6)}
 .page-hero--dark h1{color:#fff;font-size:40px;margin-top:8px}
@@ -49,11 +55,64 @@
 
 /* Service rows: two-column split with image and copy */
 .service-row{display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:stretch}
-.service-row .photo{min-height:380px;overflow:hidden}
-.service-row .photo img{width:100%;height:100%;object-fit:cover;display:block}
+.service-row .photo{min-height:420px;overflow:hidden}
+.service-row .photo img{width:100%;height:100%;object-fit:cover;object-position:center center;display:block}
 .service-row .service-info{padding:56px;background:var(--white)}
 .service-row.reverse{grid-template-columns:1fr 1fr}
 .service-row.reverse .photo{order:2}
+.services-grid .card-img{display:block;border-radius:20px;overflow:hidden;position:relative;min-height:0}
+.services-grid--five{grid-template-columns:1.22fr .78fr;gap:24px;align-items:stretch}
+.services-grid .card-img.big{height:460px;min-height:420px}
+.services-grid .card-img.small{height:100%;min-height:0;align-self:stretch;justify-self:stretch;margin:0}
+.services-grid .card-img.small img,.services-grid .card-img.big img{object-fit:cover;object-position:center center;min-width:100%;min-height:100%}
+.services-stack{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:0.26fr 0.36fr 0.38fr;gap:16px;height:460px;align-items:stretch;justify-items:stretch}
+/* Layout placement: card1 spans top row across both columns; card2 left middle; card3 tall on right spans middle+bottom; card4 left bottom */
+.services-stack .card-img.small{min-height:0;align-self:stretch;justify-self:stretch;margin:0}
+.services-stack .card-img.small:nth-child(1){grid-column:1/3;grid-row:1}
+.services-stack .card-img.small:nth-child(2){grid-column:1;grid-row:2}
+.services-stack .card-img.small:nth-child(3){grid-column:2;grid-row:2/4}
+.services-stack .card-img.small:nth-child(4){grid-column:1;grid-row:3}
+
+/* Per-card framing tweaks so small stacked cards preserve subject framing */
+.services-stack .card-img.small:nth-child(1) img{object-position:center 30%}
+.services-stack .card-img.small:nth-child(2) img{object-position:center 18%}
+.services-stack .card-img.small:nth-child(3) img{object-position:center center}
+.services-stack .card-img.small:nth-child(4) img{object-position:center 88%}
+
+/* Text alignment for stacked cards */
+.services-stack .card-copy{position:absolute;left:18px;right:18px;top:18px;bottom:18px;z-index:3;color:#fff;text-shadow:0 6px 18px rgba(0,0,0,.55);text-align:left;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;min-height:calc(100% - 36px)}
+.services-stack .card-copy h3{margin-bottom:8px;font-size:1.1rem}
+.services-stack .card-copy p{color:rgba(255,255,255,.92);margin-bottom:10px;line-height:1.4}
+.services-stack .card-copy .learn{color:#9ef0f0;font-weight:900;display:inline-block;margin-top:auto}
+
+/* Custom vertical alignment per card */
+.services-stack .card-img.small:nth-child(1) .card-copy{top:18px;bottom:18px;transform:none;justify-content:flex-start}
+.services-stack .card-img.small:nth-child(2) .card-copy{top:18px;bottom:18px;transform:none;justify-content:flex-start}
+.services-stack .card-img.small:nth-child(3) .card-copy{top:18px;bottom:18px;transform:none;justify-content:center}
+.services-stack .card-img.small:nth-child(4) .card-copy{top:18px;bottom:18px;transform:none;justify-content:flex-end}
+
+/* Keep the large card bottom-aligned text separate */
+.services-grid .card-img.big .card-copy{top:auto;bottom:24px;text-align:left;justify-content:flex-end}
+.services-grid .card-img.big .card-copy h3{font-size:1.7rem}
+.services-grid .card-img.big .card-copy p{margin-bottom:14px}
+
+/* Improve text readability over images while keeping images visible */
+.card-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(3,25,40,0) 0%,rgba(3,25,40,.62) 40%,rgba(3,25,40,.78) 100%);pointer-events:none}
+.card-copy{position:absolute;left:20px;right:20px;bottom:20px;z-index:3;color:#fff;text-shadow:0 6px 18px rgba(0,0,0,.55)}
+.card-copy h3{color:#fff}
+.card-copy p{color:rgba(255,255,255,.92)}
+.card-copy .learn{color:#9ef0f0;font-weight:900}
+
+/* Slightly reduce overlay opacity on the big card so the image shows through more */
+.card-img.big::after{background:linear-gradient(180deg,rgba(3,25,40,0) 0%,rgba(3,25,40,.45) 40%,rgba(3,25,40,.6) 100%)}
+.card-copy{position:absolute;left:24px;right:24px;bottom:24px;z-index:2}
+.card-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(3,25,40,0) 0%,rgba(3,25,40,.6) 100%);opacity:.95;}
+.card-img img{position:relative;z-index:1}
+.card-copy h3{margin-bottom:10px}
+.card-copy p{margin-bottom:12px}
+.card-copy .learn{color:#8be7f2}
+.card-img.small{background:#031a2a}
+.card-img.big{background:#031a2a}
 
 /* Contact form grid: main form + right side cards */
 .contact-grid{display:grid;grid-template-columns:1fr 340px;gap:28px;align-items:start}
@@ -65,9 +124,11 @@
 .side-card{background:var(--white);padding:18px;border-radius:12px;box-shadow:var(--shadow-sm);margin-bottom:16px}
 
 /* FAQ accordion visuals */
-.faq-item{background:transparent;border-radius:12px;margin-bottom:12px}
-.faq-q{background:var(--white);padding:14px;border-radius:10px;box-shadow:var(--shadow-sm);display:flex;justify-content:space-between;align-items:center}
-.faq-a{overflow:hidden;transition:max-height .28s ease;padding:12px 14px}
+.faq-list{max-width:760px;margin:40px auto 0}
+.faq-item{background:#fff;border-radius:12px;border:1px solid #e9eef4;box-shadow:var(--shadow-sm);margin-bottom:14px;overflow:hidden;position:relative;z-index:1}
+.faq-q{width:100%;background:#fff;border:0;padding:22px 26px;text-align:left;font-weight:900;color:var(--ink);display:flex;justify-content:space-between;align-items:center;cursor:pointer}
+.faq-a{display:block;max-height:0;overflow:hidden;padding:0 26px 0;color:#8298ab;transition:max-height .36s cubic-bezier(.22,.61,.36,1),padding .36s cubic-bezier(.22,.61,.36,1),opacity .22s ease;opacity:0}
+.faq-item.open .faq-a{padding:0 26px 24px;opacity:1;max-height:340px}
 
 @media(max-width:900px){
   .contact-grid{grid-template-columns:1fr}
@@ -90,22 +151,19 @@
   display:block;
 }
 
-/* Tighter control for hero visual card */
-.hero__visual{display:flex;align-items:center;justify-content:center}
-.hero__image{border-radius:18px;overflow:hidden;height:380px}
-
 /* Service-row photo min-height for a consistent crop */
+
 .service-row .photo{min-height:420px}
 
 /* Portrait card style for about page */
-.portrait img{border-radius:14px;box-shadow:0 18px 42px rgba(9,38,69,.08);border:6px solid rgba(11,178,181,.06)}
+.portrait{border-radius:14px;box-shadow:0 18px 42px rgba(9,38,69,.08);border:6px solid rgba(11,178,181,.06);min-height:auto;height:auto;overflow:hidden;background:none;aspect-ratio:4/3}
+.portrait img{opacity:1;visibility:visible;width:100%;height:100%;object-fit:cover;object-position:center center;display:block}
 
-/* Force About page portrait to use local bathroom asset when present.
-   This avoids touching minified/inline HTML and ensures consistent cropping. */
-.portrait{
-  background-image: url('assets/airbnbbathroom.png');
-  background-size: cover;
-  background-position: center center;
-}
-.portrait img{opacity:0;visibility:hidden}
+/* FAQ stacking and answer layout fix */
+.faq-list{position:relative;z-index:0}
+.faq-item{position:relative;z-index:1}
+.faq-q{position:relative;z-index:2;background:#fff}
+.faq-a{display:block;max-height:0;overflow:hidden;padding:0 26px 0;color:#8298ab;transition:max-height .36s cubic-bezier(.22,.61,.36,1),padding .36s cubic-bezier(.22,.61,.36,1),opacity .22s ease;opacity:0}
+.faq-item.open .faq-a{padding:0 26px 24px;opacity:1;}
+.faq-item.open .faq-a{max-height:340px}
 
