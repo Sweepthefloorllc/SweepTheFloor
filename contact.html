@@ -1,4 +1,284 @@
 <!-- CONTACT PAGE: Lead-capture page with estimate form, quick contact cards, and FAQ accordion. -->
-<!-- MAINTENANCE NOTE: File is minified for delivery; keep class names synced with CSS and script selectors. -->
-<!-- PRIMARY BLOCKS: Shared nav, hero, estimate form, service cards, FAQ, shared footer. -->
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Contact | Sweep the Floor Cleaning Co.</title><meta name="description" content="Request a free estimate from Sweep the Floor Cleaning Co. in Branson, Missouri."><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800;900&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="styles.overrides.css"></head><body><header class="nav"><div class="container nav__in"><a class="logo" href="index.html"><img src="assets/logo.png" alt="STF Cleaning Co."></a><nav class="menu"><a href="index.html">Home</a><a href="services.html">Services</a><a href="about.html">About</a><a class="active" href="contact.html">Contact</a></nav><div class="nav__right"><a class="phone" href="tel:4175591486">☎ (417) 559-1486</a><a class="btn btn--navy" href="contact.html">Free Quote</a></div></div></header><main><section class="page-hero page-hero--dark"><div class="container"><span class="eyebrow">Sweep the Floor Cleaning Co.</span><h1>Get in Touch</h1><p>Request a free estimate or just ask a question — we'll respond within 2 hours.</p></div></section><section class="contact-wrap"><div class="container contact-grid"><form class="form-card"><span class="eyebrow">Free Estimate Request</span><h2>Tell Us About Your Property</h2><div class="form-grid"><div class="field"><label>Full Name *</label><input placeholder="Jane Smith" required></div><div class="field"><label>Phone Number *</label><input placeholder="(417) 555-0000" required></div><div class="field full"><label>Email Address</label><input type="email" placeholder="jane@example.com"></div><div class="field"><label>Service Type *</label><select required><option>Select a service</option><option>AirBnB Cleaning</option><option>Construction Cleaning</option><option>Commercial Cleaning</option></select></div><div class="field"><label>Property Type *</label><select required><option>Select type</option><option>Short-term rental</option><option>New construction</option><option>Office / retail / commercial</option><option>Other</option></select></div><div class="field full"><label>Property Address *</label><input placeholder="123 Main St, Branson, MO 65616" required></div><div class="field"><label>Preferred Date</label><input type="date"></div><div class="field"><label>Cleaning Frequency</label><select><option>Select frequency</option><option>One-time</option><option>Weekly</option><option>Bi-weekly</option><option>Monthly</option><option>Airbnb turnover schedule</option></select></div><div class="field full"><label>Project Size <span style="color:#9eb1c2">(optional)</span></label><input placeholder="e.g. 1,200 sq ft / 3 bed 2 bath"></div><div class="field full"><label>Additional Notes</label><textarea placeholder="Tell us more about your property, special requirements, or access instructions..."></textarea></div></div><label class="checkline"><input type="checkbox"> I'd like a free estimate with no obligation to book.</label><button class="btn btn--navy" style="width:100%">Submit Request →</button></form><aside><div class="side-card dark"><span class="eyebrow">Call Directly</span><h3>☎ (417) 559-1486</h3><p>We respond within 2 hours</p></div><div class="side-card"><h4>Business Hours</h4><div class="hours"><span>24/7</span><strong>Always available</strong></div></div><div class="side-card"><h4>⌖ Service Area</h4><p>Branson, Ozark, Nixa, Springfield, and surrounding areas.</p></div><div class="map"><div>⌖<br>Branson, Missouri<br><small style="color:#8298ab">Taney County, MO 65616</small></div></div></aside></div></section><section class="faq" id="faq"><div class="container center"><span class="eyebrow">Common Questions</span><h2>Frequently Asked Questions</h2><p class="sub">Everything you need to know before booking your first clean.</p><div class="faq-list"><div class="faq-item"><button class="faq-q">How do you price your services? <span>⌄</span></button><div class="faq-a">Pricing depends on property size, service type, condition, frequency, and scope. Request a quote and we’ll provide a clear estimate.</div></div><div class="faq-item"><button class="faq-q">Are you licensed and insured? <span>⌄</span></button><div class="faq-a">Yes. Sweep the Floor Cleaning Co. maintains both workers’ compensation and general liability coverage in Missouri.</div></div><div class="faq-item"><button class="faq-q">What areas do you serve? <span>⌄</span></button><div class="faq-a">We serve Branson, Ozark, Nixa, Springfield, and surrounding areas.</div></div><div class="faq-item"><button class="faq-q">How far in advance should I book? <span>⌄</span></button><div class="faq-a">For best availability, book several days ahead. For Airbnb turnovers and urgent projects, call directly and we will get you in as soon as possible — we’re easy to work with.</div></div></div></div></section></main><footer class="footer"><div class="container"><div class="footer__grid"><div><img src="assets/logo.png" alt="STF"><p>Branson's premier cleaning service. Locally owned. Fully insured.</p></div><div><h4>Services</h4><a href="services.html#airbnb">AirBnB Cleaning</a><a href="services.html#construction">Construction Cleaning</a><a href="services.html#commercial">Commercial Cleaning</a></div><div><h4>Company</h4><a href="index.html">Home</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="contact.html#faq">FAQ</a></div><div><h4>Contact</h4><a href="tel:4175591486">(417) 559-1486</a><a href="tel:8706545979">(870) 654-5979</a><p>Branson, Missouri</p><p>24/7 service</p><a href="contact.html">Google Reviews</a><a href="contact.html">Service Areas</a></div></div><div class="footer__bottom"><span>© 2026 Sweep the Floor Cleaning Co. All rights reserved.</span><span class="licensed">Fully Licensed & Insured in Missouri</span></div></div></footer><a class="float-call" href="tel:4175591486">☎<span>Call Now</span></a><script src="script.js"></script></body></html>
+<!-- MAINTENANCE NOTE: Static-site form posts to FormSubmit for email delivery to the owner inbox. -->
+<!-- PRIMARY BLOCKS: Shared nav, hero, estimate form, contact cards, FAQ, shared footer. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Contact | Sweep the Floor Cleaning Co.</title>
+  <meta name="description" content="Request a free estimate from Sweep the Floor Cleaning Co. in Branson, Missouri.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.overrides.css">
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav__in">
+      <a class="logo" href="index.html" aria-label="Sweep the Floor Cleaning Co. home">
+        <img src="assets/logo.png" alt="STF Cleaning Co.">
+      </a>
+
+      <details class="nav-mobile">
+        <summary><span class="nav-mobile__icon" aria-hidden="true">&#9776;</span><span>Menu</span></summary>
+        <div class="nav-mobile__panel">
+          <a href="index.html">Home</a>
+          <a href="services.html">Services</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </div>
+      </details>
+
+      <nav class="menu" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="about.html">About</a>
+        <a class="active" href="contact.html">Contact</a>
+      </nav>
+
+      <div class="nav__right">
+        <a class="phone" href="tel:4175591486">&#9742; Call Now</a>
+        <a class="btn btn--navy" href="contact.html">Free Quote</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero page-hero--dark">
+      <div class="container">
+        <span class="eyebrow">Sweep the Floor Cleaning Co.</span>
+        <h1>Get in Touch</h1>
+        <p>Request a free estimate or just ask a question &mdash; we'll respond within 2 hours.</p>
+      </div>
+    </section>
+
+    <section class="contact-wrap">
+      <div class="container contact-grid">
+        <form class="form-card" action="https://formsubmit.co/keatong.terry@gmail.com" method="POST">
+          <input type="hidden" name="_subject" value="New Sweep the Floor estimate request">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_next" value="thank-you.html">
+
+          <span class="eyebrow">Free Estimate Request</span>
+          <h2>Tell Us About Your Property</h2>
+
+          <div class="form-grid">
+            <div class="field">
+              <label for="full-name">Full Name *</label>
+              <input id="full-name" name="full_name" placeholder="Jane Smith" autocomplete="name" required>
+            </div>
+
+            <div class="field">
+              <label for="phone-number">Phone Number *</label>
+              <input id="phone-number" name="phone_number" placeholder="(417) 555-0000" autocomplete="tel" required>
+            </div>
+
+            <div class="field full">
+              <label for="email-address">Email Address</label>
+              <input id="email-address" name="email" type="email" placeholder="jane@example.com" autocomplete="email">
+            </div>
+
+            <div class="field">
+              <label for="service-type">Service Type *</label>
+              <select id="service-type" name="service_type" required>
+                <option value="">Select a service</option>
+                <option>AirBnB Cleaning</option>
+                <option>Construction Cleaning</option>
+                <option>Commercial Cleaning</option>
+                <option>Window Cleaning</option>
+                <option>Power Washing</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="property-type">Property Type *</label>
+              <select id="property-type" name="property_type" required>
+                <option value="">Select property type</option>
+                <option>Airbnb / Vacation Rental</option>
+                <option>Residential Home</option>
+                <option>Commercial Business</option>
+                <option>Construction Site</option>
+                <option>Multi-Unit Property</option>
+              </select>
+            </div>
+
+            <div class="field full">
+              <label for="property-address">Property Address</label>
+              <input id="property-address" name="property_address" placeholder="Street address, city" autocomplete="street-address">
+            </div>
+
+            <div class="field">
+              <label for="preferred-date">Preferred Date</label>
+              <input id="preferred-date" name="preferred_date" type="date">
+            </div>
+
+            <div class="field">
+              <label for="preferred-time">Preferred Time</label>
+              <select id="preferred-time" name="preferred_time">
+                <option>Morning</option>
+                <option>Afternoon</option>
+                <option>Evening</option>
+                <option>Flexible</option>
+              </select>
+            </div>
+
+            <div class="field full">
+              <label for="project-details">Project Details *</label>
+              <textarea id="project-details" name="project_details" rows="5" placeholder="Tell us what you need cleaned, timeline, and any special requirements." required></textarea>
+            </div>
+          </div>
+
+          <button class="btn btn--teal" type="submit">Send Request &rarr;</button>
+          <p style="font-size:12px;color:#97a8b7;margin-top:10px">
+            Submissions are sent to the owner inbox at keatong.terry@gmail.com.
+          </p>
+        </form>
+
+        <aside>
+          <div class="side-card">
+            <h3>Call or Text Us</h3>
+            <p><a href="tel:4175591486" style="color:var(--teal);font-weight:900">(417) 559-1486</a></p>
+            <p><a href="tel:8706545979" style="color:var(--teal);font-weight:900">(870) 654-5979</a></p>
+            <p><a href="sms:4175591486" style="color:var(--teal);font-weight:900">Text (417) 559-1486</a></p>
+            <p>Available 24/7</p>
+          </div>
+
+          <div class="side-card">
+            <h3>Service Area</h3>
+            <p>Branson, Ozark, Nixa, Springfield, and surrounding Missouri/Ozarks areas.</p>
+          </div>
+
+          <div class="side-card">
+            <h3>Response Time</h3>
+            <p>Most quote requests are answered in under <strong>2 hours</strong>.</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="faq" id="faq">
+      <div class="container center">
+        <span class="eyebrow">Common Questions</span>
+        <h2>Frequently Asked Questions</h2>
+        <p class="sub">Everything you need to know before booking your first clean.</p>
+
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-q">How do you price your services? <span>&#8964;</span></button>
+            <div class="faq-a">Pricing depends on property size, service type, condition, frequency, and scope. Request a quote and we'll provide a clear estimate.</div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q">Are you licensed and insured? <span>&#8964;</span></button>
+            <div class="faq-a">Yes. Sweep the Floor Cleaning Co. maintains both workers' compensation and general liability coverage in Missouri.</div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q">What areas do you serve? <span>&#8964;</span></button>
+            <div class="faq-a">We serve Branson, Ozark, Nixa, Springfield, and surrounding areas.</div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-q">How far in advance should I book? <span>&#8964;</span></button>
+            <div class="faq-a">For best availability, book several days ahead. For Airbnb turnovers and urgent projects, call directly and we will get you in as soon as possible &mdash; we're easy to work with.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <img src="assets/logo.png" alt="STF">
+          <p>Branson's premier cleaning service. Locally owned. Fully insured.</p>
+        </div>
+
+        <div>
+          <h4>Services</h4>
+          <a href="services.html#airbnb">AirBnB Cleaning</a>
+          <a href="services.html#construction">Construction Cleaning</a>
+          <a href="services.html#commercial">Commercial Cleaning</a>
+        </div>
+
+        <div>
+          <h4>Company</h4>
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+          <a href="contact.html#faq">FAQ</a>
+        </div>
+
+        <div>
+          <h4>Contact</h4>
+          <a href="tel:4175591486">(417) 559-1486</a>
+          <a href="tel:8706545979">(870) 654-5979</a>
+          <p>Branson, Missouri</p>
+          <p>24/7 service</p>
+          <a href="contact.html">Google Reviews</a>
+          <a href="contact.html">Service Areas</a>
+        </div>
+      </div>
+
+      <div class="footer-mobile-menu">
+        <div class="footer-mobile-brand">
+          <img src="assets/logo.png" alt="STF">
+          <p>Branson's premier cleaning service. Locally owned. Fully insured.</p>
+        </div>
+
+        <details class="footer-mobile-drawer">
+          <summary><span class="footer-mobile-drawer__icon" aria-hidden="true">&#9776;</span><span>Menu</span></summary>
+          <div class="footer-mobile-panels">
+            <details class="footer-mobile-section">
+              <summary>Services</summary>
+              <div class="footer-mobile-links">
+                <a href="services.html#airbnb">AirBnB Cleaning</a>
+                <a href="services.html#construction">Construction Cleaning</a>
+                <a href="services.html#commercial">Commercial Cleaning</a>
+              </div>
+            </details>
+
+            <details class="footer-mobile-section">
+              <summary>About</summary>
+              <div class="footer-mobile-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+                <a href="contact.html#faq">FAQ</a>
+              </div>
+            </details>
+
+            <details class="footer-mobile-section">
+              <summary>Contact</summary>
+              <div class="footer-mobile-links">
+                <a href="tel:4175591486">(417) 559-1486</a>
+                <a href="tel:8706545979">(870) 654-5979</a>
+                <p>Branson, Missouri</p>
+                <p>24/7 service</p>
+                <a href="contact.html">Google Reviews</a>
+                <a href="contact.html">Service Areas</a>
+              </div>
+            </details>
+          </div>
+        </details>
+      </div>
+
+      <div class="footer__bottom">
+        <span>&copy; 2026 Sweep the Floor Cleaning Co. All rights reserved.</span>
+        <span class="licensed">Fully Licensed &amp; Insured in Missouri</span>
+      </div>
+    </div>
+  </footer>
+
+  <a class="float-call" href="tel:4175591486">
+    &#9742;
+    <span>Call Now</span>
+  </a>
+
+  <script src="script.js"></script>
+</body>
+</html>

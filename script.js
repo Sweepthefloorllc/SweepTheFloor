@@ -146,6 +146,88 @@ if (document.readyState === 'loading') {
   }
 })();
 
+/* ---------- Mobile footer menu builder ----------
+   Keep the desktop footer intact, but on small screens condense the
+   repeated link groups into a single hamburger-style accordion.
+*/
+(function footerMobileMenuBuilder(){
+  try{
+    var footer = document.querySelector('.footer');
+    var grid = footer && footer.querySelector('.footer__grid');
+    if(!footer || !grid || footer.querySelector('.footer-mobile-menu')) return;
+
+    var columns = Array.from(grid.children);
+    if(columns.length < 4) return;
+
+    function buildSection(title, sourceColumn){
+      var clone = sourceColumn.cloneNode(true);
+      var heading = clone.querySelector('h4');
+      if(heading) heading.remove();
+
+      var section = document.createElement('details');
+      section.className = 'footer-mobile-section';
+      section.innerHTML = '<summary>' + title + '</summary><div class="footer-mobile-links">' + clone.innerHTML + '</div>';
+      return section;
+    }
+
+    var mobileMenu = document.createElement('div');
+    mobileMenu.className = 'footer-mobile-menu';
+    mobileMenu.innerHTML = [
+      '<div class="footer-mobile-brand"></div>',
+      '<details class="footer-mobile-drawer">',
+        '<summary><span class="footer-mobile-drawer__icon" aria-hidden="true">☰</span><span>Menu</span></summary>',
+        '<div class="footer-mobile-panels"></div>',
+      '</details>'
+    ].join('');
+
+    mobileMenu.querySelector('.footer-mobile-brand').innerHTML = columns[0].innerHTML;
+
+    var panels = mobileMenu.querySelector('.footer-mobile-panels');
+    panels.append(
+      buildSection('Services', columns[1]),
+      buildSection('About', columns[2]),
+      buildSection('Contact', columns[3])
+    );
+
+    footer.insertBefore(mobileMenu, grid);
+
+    mobileMenu.querySelectorAll('.footer-mobile-section').forEach(function(section){
+      section.addEventListener('toggle', function(){
+        if(!section.open) return;
+        mobileMenu.querySelectorAll('.footer-mobile-section').forEach(function(other){
+          if(other !== section) other.open = false;
+        });
+      });
+    });
+  }catch(e){
+    console.warn('footerMobileMenuBuilder failed', e);
+  }
+})();
+
+/* ---------- FormSubmit redirect helper ----------
+   FormSubmit redirects more reliably when the _next field contains an
+   absolute URL. Build that URL from the current origin so the same HTML
+   works on local previews and the production host.
+*/
+(function formSubmitRedirectHelper(){
+  try{
+    var form = document.querySelector('form[action*="formsubmit.co"]');
+    if(!form) return;
+
+    var nextInput = form.querySelector('input[name="_next"]');
+    if(!nextInput) return;
+
+    var nextPath = nextInput.value || 'thank-you.html';
+    if (/^https?:\/\//i.test(nextPath)) return;
+
+    // Use the current page URL as the base so redirects also work from
+    // local file previews where window.location.origin is "null".
+    nextInput.value = new URL(nextPath, window.location.href).toString();
+  }catch(e){
+    console.warn('formSubmitRedirectHelper failed', e);
+  }
+})();
+
 /* ---------- Page-specific DOM tweaks ----------
    Add dark hero variant to pages that match the provided screenshots
    (services, about, contact). This keeps HTML edits minimal while
