@@ -8,6 +8,10 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>Contact | Sweep the Floor Cleaning Co.</title>
   <meta name="description" content="Request a free estimate from Sweep the Floor Cleaning Co. in Branson, Missouri.">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800;900&display=swap" rel="stylesheet">
@@ -58,9 +62,10 @@
       <div class="container contact-grid">
         <form class="form-card" action="https://formsubmit.co/sweepthefloorllc@gmail.com" method="POST">
           <input type="hidden" name="_subject" value="New Sweep the Floor estimate request">
-          <input type="hidden" name="_captcha" value="true">
+          <input type="hidden" name="_captcha" value="false">
           <input type="hidden" name="_template" value="table">
           <input type="hidden" name="_next" value="thank-you.html">
+          <input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none">
 
           <span class="eyebrow">Free Estimate Request</span>
           <h2>Tell Us About Your Property</h2>
@@ -78,7 +83,7 @@
 
             <div class="field full">
               <label for="email-address">Email Address</label>
-              <input id="email-address" name="email" type="email" placeholder="jane@example.com" autocomplete="email">
+              <input id="email-address" name="client_email" type="email" placeholder="jane@example.com" autocomplete="email">
             </div>
 
             <div class="field">
