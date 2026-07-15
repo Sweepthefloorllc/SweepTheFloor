@@ -102,10 +102,17 @@
 .services-stack .card-img.small:nth-child(4){grid-column:1;grid-row:3}
 
 /* Per-card framing tweaks so small stacked cards preserve subject framing */
-.services-stack .card-img.small:nth-child(1) img{object-position:center 30%}
+.services-stack .card-img.small:nth-child(1) img{object-position:center center}
 .services-stack .card-img.small:nth-child(2) img{object-position:center 18%}
 .services-stack .card-img.small:nth-child(3) img{object-position:center center}
-.services-stack .card-img.small:nth-child(4) img{object-position:center 16%}
+.services-stack .card-img.small:nth-child(4) img{object-position:center 12%}
+
+/* Construction service photo: enforce a tighter center crop with equal top/bottom trim. */
+section#construction.service-row .photo{position:relative;overflow:hidden;border:0;outline:0;box-shadow:none}
+section#construction.service-row .photo img{position:absolute;left:0;top:50%;width:100%;height:160%;max-width:none;object-fit:cover;object-position:center center;transform:translateY(-50%);border:0;outline:0;box-shadow:none;display:block}
+
+/* Power washing image: show slightly more top detail to trim a bit from the bottom. */
+section#powerwashing.service-row .photo img{object-position:center 42%}
 
 /* Text alignment for stacked cards */
 .services-stack .card-copy{position:absolute;left:18px;right:18px;top:12px;bottom:8px;z-index:3;color:#fff;text-shadow:0 6px 18px rgba(0,0,0,.55);text-align:left;display:flex;flex-direction:column;justify-content:space-between;min-height:calc(100% - 20px)}
@@ -141,6 +148,11 @@
 .card-copy .learn{color:#8be7f2}
 .card-img.small{background:#031a2a}
 .card-img.big{background:#031a2a}
+
+/* Apply the same dark image overlay treatment to the homepage cleaning-supplies block. */
+.why-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(3,25,40,0) 0%,rgba(3,25,40,.6) 100%);opacity:.95;pointer-events:none;z-index:2}
+.why-photo img{position:relative;z-index:1}
+.why-photo .photo-badge{z-index:3}
 
 /* Contact form grid: main form + right side cards */
 .contact-grid{display:grid;grid-template-columns:1fr 340px;gap:28px;align-items:start}
@@ -416,13 +428,18 @@
     border-radius:10px;
     color:var(--ink);
     font-weight:900;
-    transition:background .18s ease,color .18s ease,transform .18s ease;
+    border:1px solid transparent;
+    transition:background .18s ease,color .18s ease,transform .18s ease,border-color .18s ease,box-shadow .18s ease;
   }
 
-  .nav-mobile__panel a:hover{
-    background:#eefafb;
+  .nav-mobile__panel a:hover,
+  .nav-mobile__panel a:focus-visible{
+    background:linear-gradient(180deg,#f4fdfe 0%,#e9f8fb 100%);
     color:var(--teal);
+    border-color:rgba(11,155,159,.25);
+    box-shadow:0 8px 16px rgba(9,38,69,.08);
     transform:translateX(2px);
+    outline:none;
   }
 
   .nav-mobile[open] .nav-mobile__panel{
@@ -1586,6 +1603,153 @@
 
   .about-page .value{
     padding:16px 12px;
+  }
+}
+
+/* Final hero mobile alignment pass: single-column flow with centered visual and balanced CTAs. */
+@media(max-width:800px){
+  .hero{
+    padding:24px 0 16px!important;
+  }
+
+  .hero__grid{
+    grid-template-columns:1fr!important;
+    gap:14px!important;
+    min-height:auto!important;
+    align-items:start!important;
+    justify-items:stretch!important;
+    text-align:left!important;
+  }
+
+  .hero__grid > div:first-child{
+    order:1;
+    max-width:none!important;
+    margin:0!important;
+  }
+
+  .hero .lead{
+    max-width:none!important;
+  }
+
+  .hero__visual{
+    order:2;
+    width:100%;
+    margin:0!important;
+    display:flex!important;
+    justify-content:center!important;
+    align-items:center!important;
+  }
+
+  .hero__image{
+    width:100%!important;
+    max-width:420px!important;
+    height:250px!important;
+    border-radius:18px!important;
+    clip-path:none!important;
+  }
+
+  .hero__cta--mobile{
+    order:3;
+    width:100%;
+    display:flex!important;
+    justify-content:center;
+    align-items:center;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-top:4px!important;
+  }
+
+  .hero__cta--mobile .btn{
+    flex:1 1 165px;
+    min-width:150px;
+    max-width:220px;
+  }
+
+  .float--top{
+    left:12px!important;
+    top:12px!important;
+  }
+
+  .float--rating{
+    left:12px!important;
+    bottom:12px!important;
+  }
+}
+
+@media(max-width:480px){
+  .hero h1{
+    font-size:29px!important;
+    line-height:1.08!important;
+  }
+
+  .hero__image{
+    height:220px!important;
+    max-width:360px!important;
+  }
+
+  .hero__cta--mobile .btn{
+    flex:1 1 100%;
+    max-width:none;
+  }
+}
+
+/* Final mobile polish pass: improve rhythm, touch comfort, and visual consistency. */
+@media(max-width:800px){
+  body{
+    overflow-x:hidden;
+  }
+
+  .container{
+    width:min(var(--max),calc(100% - 18px));
+  }
+
+  .hero .lead{
+    font-size:14.75px!important;
+    line-height:1.58!important;
+  }
+
+  .hero__cta--mobile .btn,
+  .nav__right .btn,
+  .phone,
+  .nav-mobile > summary,
+  .nav-mobile__panel a{
+    min-height:44px;
+  }
+
+  .phone{
+    display:inline-flex!important;
+    align-items:center;
+    justify-content:center;
+    line-height:1.1;
+    text-align:center;
+  }
+
+  .trust-grid div,
+  .audience-grid div,
+  .feature,
+  .value,
+  .stats__grid > div,
+  .gallery-grid article,
+  .step{
+    border-radius:16px!important;
+  }
+
+  .section h2{
+    letter-spacing:-.03em;
+  }
+}
+
+@media(max-width:480px){
+  .container{
+    width:min(var(--max),calc(100% - 14px));
+  }
+
+  .hero .lead{
+    font-size:14px!important;
+  }
+
+  .hero__cta--mobile{
+    gap:9px!important;
   }
 }
 

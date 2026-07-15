@@ -244,3 +244,52 @@ if (document.readyState === 'loading') {
     }
   }catch(e){console.warn('heroVariantHelper failed',e)}
 })();
+
+/* ---------- Mobile details close-on-outside ----------
+   Close mobile hamburger/dropdown <details> elements when the user
+   clicks/taps outside, instead of requiring a second tap on summary.
+*/
+(function mobileDetailsOutsideClose(){
+  try{
+    var selectors = ['.nav-mobile', '.footer-mobile-drawer'];
+    var detailsNodes = document.querySelectorAll(selectors.join(','));
+    if(!detailsNodes.length) return;
+
+    function closeAllExcept(activeNode){
+      detailsNodes.forEach(function(node){
+        if(node !== activeNode) node.open = false;
+      });
+    }
+
+    // Keep one mobile drawer open at a time.
+    detailsNodes.forEach(function(node){
+      node.addEventListener('toggle', function(){
+        if(node.open) closeAllExcept(node);
+      });
+    });
+
+    // Pointerdown closes open menus before focus/click side effects.
+    document.addEventListener('pointerdown', function(event){
+      var clickedInsideAny = false;
+      detailsNodes.forEach(function(node){
+        if(node.contains(event.target)) clickedInsideAny = true;
+      });
+
+      if(clickedInsideAny) return;
+
+      detailsNodes.forEach(function(node){
+        if(node.open) node.open = false;
+      });
+    });
+
+    // Accessibility: allow Escape to close any open mobile drawer.
+    document.addEventListener('keydown', function(event){
+      if(event.key !== 'Escape') return;
+      detailsNodes.forEach(function(node){
+        if(node.open) node.open = false;
+      });
+    });
+  }catch(e){
+    console.warn('mobileDetailsOutsideClose failed', e);
+  }
+})();
